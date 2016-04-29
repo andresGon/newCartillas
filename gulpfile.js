@@ -4,6 +4,7 @@ var sass = require('gulp-sass');
 var path = require('path');
 var jade = require('gulp-jade');
 var errorNotifier = require('gulp-error-notifier');
+var uglyfly = require('gulp-uglyfly');
 
 
 // Config Sass
@@ -43,14 +44,26 @@ gulp.task('server', function() {
 
 // conf error notify
 
+gulp.task('error', function(){
 
-gulp.src('./src/jade/*.jade')
-    .pipe(errorNotifier())
-    .pipe(jade())
-    .pipe(gulp.dest('./dist'));
-gulp.src('./src/sass/*.scss')
-    .pipe(errorNotifier.handleError(sass()))
-    .pipe(gulp.dest('./dist/css'));
+        gulp.src('./src/jade/*.jade')
+            .pipe(errorNotifier())
+            .pipe(jade())
+            .pipe(gulp.dest('./dist'));
+        gulp.src('./src/sass/*.scss')
+            .pipe(errorNotifier.handleError(sass()))
+            .pipe(gulp.dest('./dist/css'));
+
+});
+// copy javascrpit
+
+
+gulp.task('compress', function() {
+  gulp.src('src/js/*.js')
+    .pipe(uglyfly())
+    .pipe(gulp.dest('dist/js'))
+});
+
 
 
 // wacth
@@ -58,7 +71,9 @@ gulp.src('./src/sass/*.scss')
 gulp.task('watch', function() {
   gulp.watch('./src/jade/*.jade',['templates']);
   gulp.watch('./src/sass/*.scss', ['sass']);
+  gulp.watch('./src/js/*.js', ['compress']);
+
 })
 
 // tareas default
-gulp.task('default', ['sass','watch','server','templates']);
+gulp.task('default', ['sass','watch','server','templates', 'error', 'compress']);

@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".--menu").click(function(){$(".mainMenu").css("display","block").addClass("animated slideInDown")})});
