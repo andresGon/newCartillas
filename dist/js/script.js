@@ -1,1 +1,1 @@
-$(document).ready(function(){$(".--menu").click(function(){$(".mainMenu").css("display","block").addClass("animated slideInDown")})});
+$(document).ready(function(){$(".--menu").click(function(){var s=$(this).data("clicks");s?($(".mainMenu").removeClass("slideInDown").addClass("class_name"),$(this).removeClass("openMenu")):($(".mainMenu").css("display","block").addClass("animated slideInDown"),$(this).addClass("openMenu")),$(this).data("clicks",!s)})});

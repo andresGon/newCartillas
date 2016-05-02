@@ -19,6 +19,13 @@ $rojo01: #D5262E;
         transition: all $sec ease;
 }
 
+@mixin rotate($rot){
+        -webkit-transform: rotate($rot);
+        -ms-transform: rotate($rot);
+        -o-transition: rotate($rot);
+        transform: rotate($rot);
+}
+
 
 // ========================= header
 body{
@@ -80,7 +87,7 @@ header{
                         }
                         &.--menu{
                                 position: relative;
-                                z-index: 101;
+                                z-index: 200;
                         }
                         .__bar{
                                 width: 22px;
@@ -89,11 +96,32 @@ header{
                                 display: block;
                                 margin: 5px auto 0;
                                 clear: both;
+                                @include transition(300ms);
                                 &:nth-of-type(1){
                                         margin: 16px auto 0;
                                 }
                         }
 
+                }
+        }
+}
+.openMenu{
+        background: #fff !important;
+
+        span{
+                background:  $rojo01 !important;
+                &:nth-of-type(1){
+                        -webkit-transition: translate(0, 7px) rotate(45deg);
+                        -moz-transition: translate(0, 7px) rotate(45deg);
+                        -ms-transition: translate(0, 7px) rotate(45deg);
+                        -o-transition: translate(0, 7px) rotate(45deg);
+                        transform: translate(0, 7px) rotate(45deg);  /* Standard syntax */
+                }
+                &:nth-of-type(2){
+                        display: none !important;
+                }
+                &:nth-of-type(3){
+                        @include rotate(-45deg);
                 }
         }
 }

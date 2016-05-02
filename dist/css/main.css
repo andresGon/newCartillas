@@ -2777,16 +2777,40 @@ header {
         margin: 17px 0 0 0; }
       header .__wrap .__btn.--menu {
         position: relative;
-        z-index: 101; }
+        z-index: 200; }
       header .__wrap .__btn .__bar {
         width: 22px;
         height: 2px;
         background: #fff;
         display: block;
         margin: 5px auto 0;
-        clear: both; }
+        clear: both;
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease; }
         header .__wrap .__btn .__bar:nth-of-type(1) {
           margin: 16px auto 0; }
+
+.openMenu {
+  background: #fff !important; }
+  .openMenu span {
+    background: #D5262E !important; }
+    .openMenu span:nth-of-type(1) {
+      -webkit-transition: translate(0, 7px) rotate(45deg);
+      -moz-transition: translate(0, 7px) rotate(45deg);
+      -ms-transition: translate(0, 7px) rotate(45deg);
+      -o-transition: translate(0, 7px) rotate(45deg);
+      transform: translate(0, 7px) rotate(45deg);
+      /* Standard syntax */ }
+    .openMenu span:nth-of-type(2) {
+      display: none !important; }
+    .openMenu span:nth-of-type(3) {
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transition: rotate(-45deg);
+      transform: rotate(-45deg); }
 
 .mainWrap {
   width: 1024px;
